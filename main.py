@@ -129,7 +129,7 @@ params = BrainFlowInputParams()
 # Modificar serial port de donde esté conectado el dongle
 params.serial_port = 'COM3'
 # Declarando id de lectura CYTON
-board_id = BoardIds.CYTON_BOARD.value
+board_id = BoardIds.SYNTHETIC_BOARD.value
 sampling_rate = BoardShim.get_sampling_rate(board_id)
 # sampling_rate = BoardShim.get_sampling_rate(board_id)
 board = BoardShim(board_id, params)
@@ -245,17 +245,17 @@ try:
 
         # Creamos diccionario de listas de psd para guardar en csv
         # Lo hago con array porque la info de psd está dentro de arrays
-        '''
+        
         dictionary_psd = {'PSD 1': psd_ch1_array[0], 'PSD 2': psd_ch2_array[0], 'PSD 3': psd_ch3_array[0],
                           'PSD 4': psd_ch4_array[0], 'PSD 5': psd_ch5_array[0], 'PSD 6': psd_ch6_array[0],
                           'PSD 7': psd_ch7_array[0], 'PSD 8': psd_ch8_array[0]}
+        
         '''
-
         dictionary_psd = {psd_ch1_array[0], psd_ch2_array[0], psd_ch3_array[0],
                            psd_ch4_array[0], psd_ch5_array[0], psd_ch6_array[0],
-                           psd_ch7_array[0], psd_ch8_array[0]}
-
-        print(dictionary_psd)
+                           psd_ch7_array[0], psd_ch8_array[0], }
+        '''
+        #print(dictionary_psd)
         ###Guardado de datos en csv
         df = pd.DataFrame(dictionary_psd)
         #df2 = pd.DataFrame()
@@ -271,7 +271,7 @@ try:
         '''
 
         # Funciona esta generación de gráfica
-
+        '''
         #Gráfica de datos crudos
         ch1.extend(data[1])
         ax1.clear()
@@ -313,6 +313,7 @@ try:
         ax8.plot(ch8)
         plt.pause(0.01)
         # Funciona esta generación de gráfica
+        '''
         '''
         #Gráfica de datos con psd
         psd_ch1.extend(psd)
@@ -467,3 +468,4 @@ except KeyboardInterrupt:
 
 ##############Links que pueden ayudar al entendimiento del código ##############
 # https://www.geeksforgeeks.org/python-save-list-to-csv/
+
